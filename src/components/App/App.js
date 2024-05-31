@@ -1,11 +1,10 @@
-import './App.css';
+/* Import */
+import CurrencyConverter from "../CurrentcyConverter";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        Currency converter
-      </header>
+        <CurrencyConverter />
     </div>
   );
 }
