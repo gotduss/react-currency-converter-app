@@ -12,6 +12,8 @@ const CurrencyConverter = () => {
   const [toCurrency, setToCurrency] = useState('EUR');
   const [convertedAmount, setConvertedAmount] = useState(null);
   const [conversionRate, setConversionRate] = useState(null);
+  const [resultFromCurrency, setResultFromCurrency] = useState('USD');
+  const [resultToCurrency, setResultToCurrency] = useState('EUR');
   
   useEffect(() => {
     const fetchCurrencies = async () => {
@@ -36,6 +38,8 @@ const CurrencyConverter = () => {
       const rate = response.data[toCurrency];
       setConversionRate(rate);
       setConvertedAmount((amount * rate).toFixed(2));
+      setResultFromCurrency(fromCurrency);
+      setResultToCurrency(toCurrency);
     } catch (error) {
       console.error('Error converting currency:', error);
     }
@@ -82,9 +86,9 @@ const CurrencyConverter = () => {
       {convertedAmount && (
         <div>
           <h2>
-            {amount} {fromCurrency} is equal to {convertedAmount} {toCurrency}
+            {amount} {resultFromCurrency} is equal to {convertedAmount} {resultToCurrency}
           </h2>
-          <p>Conversion Rate: 1 {fromCurrency} = {conversionRate} {toCurrency}</p>
+          <p>Conversion Rate: 1 {resultFromCurrency} = {conversionRate} {resultToCurrency}</p>
         </div>
       )}
     </div>
