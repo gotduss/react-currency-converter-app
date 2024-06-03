@@ -1,5 +1,6 @@
 /* Import */
 import CurrencyConverter from "../CurrentcyConverter";
+import './App.css';
 
 function App() {
   return (

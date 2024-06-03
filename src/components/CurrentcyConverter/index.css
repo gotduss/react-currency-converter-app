@@ -1,0 +1,99 @@
+.CurrencyConverter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 30px;
+}
+.CurrencyConverter h1 {
+  color: #e0b1cb;
+  text-align: center;
+}
+
+.CurrencyConverter form {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1000px;
+  margin-top: 30px;
+  padding: 30px 15px;
+  background-color: #fafaff;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
+}
+
+.CurrencyConverter .formGroup {
+  width: 100%;
+  padding: 5px 15px;
+}
+
+.CurrencyConverter label {
+  color: #231942;
+}
+
+.CurrencyConverter input,
+.CurrencyConverter select {
+  width: 100%;
+  border: 2px solid #9f86c0;
+  border-radius: 4px;
+}
+
+.CurrencyConverter input {
+  padding: 8px 10px 8px 0;
+  border-left: 0;
+  border-radius: 0 4px 4px 0
+}
+
+.CurrencyConverter select {
+  display: block;
+  height: 42px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.CurrencyConverter button {
+  flex-grow: 1;
+  height: 42px;
+  margin: 20px 15px 0 15px;
+  background-color: #9f86c0;
+  color: #fafaff;
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.CurrencyConverter .currencyFormGroup {
+  display: flex;
+  align-items: center;
+}
+
+.CurrencyConverter .currencyFormGroup > span {
+  order: -1;
+  padding: 8px 0 8px 10px;
+  background-color: #FFF;
+  border: 2px solid #9f86c0;
+  border-right: 0;
+  border-radius: 4px 0 0 4px;
+}
+
+.CurrencyConverter .currencyFormGroup input:focus + span,
+.CurrencyConverter .currencyFormGroup input:focus-visible + span {
+  border: 2px solid #231942;
+  border-right: 0;
+}
+
+.result {
+  margin-top: 30px;
+  color: #fafaff;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .CurrencyConverter .formGroup {
+    flex: 0 0 33.33%;
+    max-width: 33.33%;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
+

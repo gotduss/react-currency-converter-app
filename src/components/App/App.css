@@ -1,0 +1,30 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  background: rgb(35,25,66);
+  background: linear-gradient(90deg, rgba(35,25,66,1) 0%, rgba(94,84,142,1) 100%);
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+h1, h2, h3, h4, h5, h6, label {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+p, li, a, input, button, select, label input, label select {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+input:focus, select:focus,
+input:focus-visible, select:focus-visible {
+  outline: 0;
+  border: 2px solid #231942;
+}
+
+input:focus, input:focus-visible {
+  border-left: 0;
+}

@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { API_KEY } from "../Data";
 import Freecurrencyapi from "@everapi/freecurrencyapi-js";
 import CurrencySelector from '../CurrencySelector';
+import './index.css';
 
 const CurrencyConverter = () => {
   const freecurrencyapi = new Freecurrencyapi(API_KEY);
@@ -14,6 +15,7 @@ const CurrencyConverter = () => {
   const [conversionRate, setConversionRate] = useState(null);
   const [resultFromCurrency, setResultFromCurrency] = useState('USD');
   const [resultToCurrency, setResultToCurrency] = useState('EUR');
+  const [currencySymbols, setCurrencySymbols] = useState({ USD: { symbol: '$' } });
   
   useEffect(() => {
     const fetchCurrencies = async () => {
@@ -21,6 +23,7 @@ const CurrencyConverter = () => {
         const response = await freecurrencyapi.currencies();
         console.log(Object.values(response.data));
         setCurrencies(Object.values(response.data));
+        setCurrencySymbols(response.data);
       } catch (error) {
         console.error('Error fetching currencies:', error);
       }
@@ -45,21 +48,28 @@ const CurrencyConverter = () => {
     }
   };
 
+  const getCurrencySymbol = (currencyCode) => {
+    return currencySymbols[currencyCode]?.symbol || '';
+  };
+
   return (
     <div className="CurrencyConverter">
       <h1>Currency converter</h1>
       <form onSubmit={e => e.preventDefault()}>
-        <div>
+        <div className="formGroup">
           <label>
             Amount:
-            <input
-              type="number"
-              value={amount}
-              onChange={e => setAmount(e.target.value)}
-            />
+            <div className="currencyFormGroup">
+              <input
+                type="number"
+                value={amount}
+                onChange={e => setAmount(e.target.value)}
+              />
+              <span>{getCurrencySymbol(fromCurrency)}</span>
+            </div>
           </label>
         </div>
-        <div>
+        <div className="formGroup">
           <label>
             From:
             <CurrencySelector
@@ -69,7 +79,7 @@ const CurrencyConverter = () => {
             />
           </label>
         </div>
-        <div>
+        <div className="formGroup">
           <label>
             To:
             <CurrencySelector
@@ -84,7 +94,7 @@ const CurrencyConverter = () => {
         </button>
       </form>
       {convertedAmount && (
-        <div>
+        <div className="result">
           <h2>
             {amount} {resultFromCurrency} is equal to {convertedAmount} {resultToCurrency}
           </h2>
